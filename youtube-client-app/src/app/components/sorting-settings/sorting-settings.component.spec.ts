@@ -8,7 +8,7 @@ describe('SortingSettingsComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [SortingSettingsComponent]
+      declarations: [SortingSettingsComponent],
     });
     fixture = TestBed.createComponent(SortingSettingsComponent);
     component = fixture.componentInstance;
