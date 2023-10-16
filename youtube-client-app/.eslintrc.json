@@ -8,6 +8,9 @@
       "files": [
         "*.ts"
       ],
+      "parserOptions": {
+        "project": ["tsconfig.(app|spec).json"]
+      },
       "extends": [
         "airbnb-base",
         "airbnb-typescript/base",
