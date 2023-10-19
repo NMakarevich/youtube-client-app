@@ -20,16 +20,10 @@
 
 .search-button {
   width: 100px;
-  background-color: #1E88E5;
-  color: white;
-  border: none;
   border-radius: 0 3px 3px 0;
 
   &:hover {
-    box-shadow: 2px 0 3px 1px #2196F3;
-  }
-
-  &:active {
-    font-weight: bold;
+    box-shadow: 2px 0 2px 2px #2196F3;
   }
 }
+

@@ -1,10 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from '../components/header/header.component';
+import { SortingSettingsModule } from '../components/sorting-settings/sorting-settings.module';
+import { SearchModule } from '../components/search/search.module';
+import { ButtonComponent } from '../components/UI/button/button.component';
+import { SortFilterPipe } from '../pipes/sort-filter.pipe';
 
 @NgModule({
-  declarations: [HeaderComponent],
-  exports: [HeaderComponent],
-  imports: [CommonModule],
+  declarations: [HeaderComponent, SortFilterPipe],
+  exports: [HeaderComponent, SortFilterPipe],
+  imports: [CommonModule, SortingSettingsModule, SearchModule, ButtonComponent],
 })
 export class SharedModule {}
