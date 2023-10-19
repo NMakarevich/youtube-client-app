@@ -25,6 +25,11 @@
     &-item {
       display: flex;
       align-items: center;
+      font-size: 14px;
+
+      .material-symbols-outlined {
+        font-size: 14px;
+      }
     }
   }
 
