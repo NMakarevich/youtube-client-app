@@ -1,1 +1,3 @@
-<p>results-list works!</p>
+<ng-container *ngFor='let result of (results.items | sortFilter: sortFilter)'>
+  <app-results-item [item]='result'></app-results-item>
+</ng-container>
