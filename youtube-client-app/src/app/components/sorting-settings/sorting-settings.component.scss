@@ -1,0 +1,47 @@
+:host {
+  display: none;
+  padding: 10px;
+  height: 0;
+  gap: 10px;
+}
+
+:host(.open) {
+  display: flex;
+  height: auto;
+  align-items: center;
+}
+
+.sorting-param {
+  background-color: transparent;
+  border: none;
+  padding: 5px;
+  color: white;
+  text-decoration: underline;
+  cursor: pointer;
+
+  &:hover {
+    color: white;
+    background-color: rgba(33, 150, 243, 0.2);
+    border-radius: 3px;
+  }
+}
+
+.sorting-filter {
+  &-label {
+    margin-right: 10px;
+  }
+
+  &-input {
+    padding: 5px;
+    border: none;
+    border-radius: 3px;
+
+    &:hover {
+      box-shadow: 0 0 1px 1px #2196F3;
+    }
+
+    &:focus {
+      outline: 2px solid #2196F3;
+    }
+  }
+}

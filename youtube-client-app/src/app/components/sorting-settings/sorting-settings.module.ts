@@ -5,5 +5,6 @@ import { SortingSettingsComponent } from './sorting-settings.component';
 @NgModule({
   declarations: [SortingSettingsComponent],
   imports: [CommonModule],
+  exports: [SortingSettingsComponent],
 })
 export class SortingSettingsModule {}
