@@ -1,1 +1,16 @@
-<p>header works!</p>
+<div class='container'>
+  <div class='container-inner'>
+    <span class='header-logo'></span>
+    <app-search (showResults)='getSearchResults($event)'></app-search>
+    <app-button class='toggle-button'  (click)='toggleSettings()'>
+      <span class="material-symbols-outlined">tune</span>
+    </app-button>
+  </div>
+  <app-sorting-settings (setSortFilter)='getSortFilter($event)' [ngClass]='settingsIsOpen ? "open" : ""'></app-sorting-settings>
+  <div class='auth'>
+    <span class='auth-username'>Your name</span>
+    <button class='auth-button' type='button'>
+      <span class='material-symbols-outlined'>account_circle</span>
+    </button>
+  </div>
+</div>
