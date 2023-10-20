@@ -1,14 +1,6 @@
-<app-header (setSearchResults)='getSearchTerm($event)'
-            (setSort)='getSort($event)'
-            (setFilter)='getFilter($event)'>
-</app-header>
+<app-header></app-header>
 <main>
   <div class='container'>
-    <ng-container *ngIf='results'>
-      <app-results-list [results]='results'
-                        [sort]='sort'
-                        [filterTerm]='filterTerm'
-      ></app-results-list>
-    </ng-container>
+    <router-outlet></router-outlet>
   </div>
 </main>
