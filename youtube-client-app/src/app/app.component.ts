@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { SearchResponse } from './components/search/search-response';
-import { SortFilter } from './components/sorting-settings/sorting-settings.component';
+import { Sort } from './components/sorting-settings/sorting-settings.component';
 
 @Component({
   selector: 'app-root',
@@ -12,14 +12,20 @@ export class AppComponent {
 
   results!: SearchResponse;
 
-  sortFilter!: SortFilter;
+  sort!: Sort;
+
+  filterTerm!: string;
 
   getSearchTerm(response: SearchResponse) {
     this.results = response;
   }
 
-  getSortFilter(sortFilter: SortFilter) {
-    if (!this.sortFilter) this.sortFilter = sortFilter;
-    else Object.assign(this.sortFilter, sortFilter);
+  getSort(sort: Sort) {
+    if (!this.sort) this.sort = sort;
+    else Object.assign(this.sort, sort);
+  }
+
+  getFilter(filter: string) {
+    this.filterTerm = filter;
   }
 }

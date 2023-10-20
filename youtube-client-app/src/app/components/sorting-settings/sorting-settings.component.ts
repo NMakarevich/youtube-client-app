@@ -6,37 +6,36 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./sorting-settings.component.scss'],
 })
 export class SortingSettingsComponent {
-  sortFilter: SortFilter = {
+  sort: Sort = {
     date: 0,
     views: 0,
-    term: '',
   };
 
-  @Output() setSortFilter: EventEmitter<SortFilter> =
-    new EventEmitter<SortFilter>();
+  @Output() setSort: EventEmitter<Sort> = new EventEmitter<Sort>();
+
+  @Output() setFilter: EventEmitter<string> = new EventEmitter<string>();
 
   changeDateDirection() {
-    this.sortFilter.date = this.sortFilter.date <= 0 ? 1 : -1;
-    this.sortFilter.views = 0;
-    this.setSortFilter.emit(this.sortFilter);
+    this.sort.date = this.sort.date <= 0 ? 1 : -1;
+    this.sort.views = 0;
+    this.setSort.emit(this.sort);
   }
 
   changeViewsDirection() {
-    this.sortFilter.views = this.sortFilter.views <= 0 ? 1 : -1;
-    this.sortFilter.date = 0;
-    this.setSortFilter.emit(this.sortFilter);
+    this.sort.views = this.sort.views <= 0 ? 1 : -1;
+    this.sort.date = 0;
+    this.setSort.emit(this.sort);
   }
 
   setFilterTerm(event: Event) {
     if (event instanceof InputEvent) {
-      this.sortFilter.term = (event.target as HTMLInputElement).value as string;
-      this.setSortFilter.emit(this.sortFilter);
+      const termString = (event.target as HTMLInputElement).value as string;
+      this.setFilter.emit(termString);
     }
   }
 }
 
-export interface SortFilter {
+export interface Sort {
   date: number;
   views: number;
-  term: string;
 }

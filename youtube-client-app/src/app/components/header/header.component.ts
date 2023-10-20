@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { SearchResponse } from '../search/search-response';
-import { SortFilter } from '../sorting-settings/sorting-settings.component';
+import { Sort } from '../sorting-settings/sorting-settings.component';
 
 @Component({
   selector: 'app-header',
@@ -13,15 +13,20 @@ export class HeaderComponent {
   @Output() setSearchResults: EventEmitter<SearchResponse> =
     new EventEmitter<SearchResponse>();
 
-  @Output() setSortFilter: EventEmitter<SortFilter> =
-    new EventEmitter<SortFilter>();
+  @Output() setSort: EventEmitter<Sort> = new EventEmitter<Sort>();
+
+  @Output() setFilter: EventEmitter<string> = new EventEmitter<string>();
 
   getSearchResults(response: SearchResponse) {
     this.setSearchResults.emit(response);
   }
 
-  getSortFilter(sortFilter: SortFilter) {
-    this.setSortFilter.emit(sortFilter);
+  getSort(sort: Sort) {
+    this.setSort.emit(sort);
+  }
+
+  getFilter(filter: string) {
+    this.setFilter.emit(filter);
   }
 
   toggleSettings() {

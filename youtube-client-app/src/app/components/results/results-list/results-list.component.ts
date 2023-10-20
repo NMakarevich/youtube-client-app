@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { SearchResponse } from '../../search/search-response';
-import { SortFilter } from '../../sorting-settings/sorting-settings.component';
+import { Sort } from '../../sorting-settings/sorting-settings.component';
 
 @Component({
   selector: 'app-results-list',
@@ -10,5 +10,7 @@ import { SortFilter } from '../../sorting-settings/sorting-settings.component';
 export class ResultsListComponent {
   @Input() results!: SearchResponse;
 
-  @Input() sortFilter!: SortFilter;
+  @Input() sort!: Sort;
+
+  @Input() filterTerm!: string;
 }

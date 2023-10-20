@@ -7,7 +7,7 @@
     </app-button>
   </div>
   <div class='container-sorting' [class.open]='settingsIsOpen'>
-    <app-sorting-settings (setSortFilter)='getSortFilter($event)'></app-sorting-settings>
+    <app-sorting-settings (setSort)='getSort($event)' (setFilter)='getFilter($event)'></app-sorting-settings>
   </div>
   <div class='auth'>
     <span class='auth-username'>Your name</span>
