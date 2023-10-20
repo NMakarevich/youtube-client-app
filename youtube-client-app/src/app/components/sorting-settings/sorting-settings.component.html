@@ -1,7 +1,9 @@
-<p>Sorting by:</p>
-<button class='sorting-param' (click)='changeDateDirection()'>date</button>
-<button class='sorting-param' (click)='changeViewsDirection()'>count of views</button>
-<div class='sorting-filter'>
-  <label class='sorting-filter-label' for='filter'>word or sentence</label>
-  <input class='sorting-filter-input' type='text' name='filter' id='filter' (input)='setFilterTerm($event)'>
+<div class='container'>
+  <p>Sorting by:</p>
+  <button class='sorting-param' (click)='changeDateDirection()'>date</button>
+  <button class='sorting-param' (click)='changeViewsDirection()'>count of views</button>
+  <div class='sorting-filter'>
+    <label class='sorting-filter-label' for='filter'>word or sentence</label>
+    <input class='sorting-filter-input' type='text' name='filter' id='filter' (input)='setFilterTerm($event)'>
+  </div>
 </div>

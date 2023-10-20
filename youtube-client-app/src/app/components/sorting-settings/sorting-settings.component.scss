@@ -1,14 +1,18 @@
 :host {
-  display: none;
-  padding: 10px;
-  height: 0;
-  gap: 10px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s;
 }
 
 :host(.open) {
+  max-height: 50px;
+}
+
+.container {
   display: flex;
-  height: auto;
   align-items: center;
+  gap: 10px;
+  padding: 10px;
 }
 
 .sorting-param {
