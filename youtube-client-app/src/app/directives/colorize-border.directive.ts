@@ -33,7 +33,7 @@ export class ColorizeBorderDirective implements OnInit {
     this.renderer.setStyle(
       this.elemRef.nativeElement,
       'border-bottom',
-      `3px solid ${color}`
+      `5px solid ${color}`
     );
   }
 }
