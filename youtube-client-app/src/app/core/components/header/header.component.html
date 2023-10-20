@@ -1,13 +1,13 @@
 <div class='container'>
   <div class='container-inner'>
     <span class='header-logo'></span>
-    <app-search (showResults)='getSearchResults($event)'></app-search>
+    <app-search></app-search>
     <app-button class='toggle-button'  (click)='toggleSettings()'>
       <span class="material-symbols-outlined">tune</span>
     </app-button>
   </div>
   <div class='container-sorting' [class.open]='settingsIsOpen'>
-    <app-sorting-settings (setSort)='getSort($event)' (setFilter)='getFilter($event)'></app-sorting-settings>
+    <app-sorting-settings></app-sorting-settings>
   </div>
   <div class='auth'>
     <span class='auth-username'>Your name</span>

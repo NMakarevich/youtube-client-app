@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
+import { Sort, SortingService } from '../../services/sorting.service';
 
 @Component({
   selector: 'app-sorting-settings',
@@ -11,31 +12,24 @@ export class SortingSettingsComponent {
     views: 0,
   };
 
-  @Output() setSort: EventEmitter<Sort> = new EventEmitter<Sort>();
-
-  @Output() setFilter: EventEmitter<string> = new EventEmitter<string>();
+  constructor(private readonly sortingService: SortingService) {}
 
   changeDateDirection() {
     this.sort.date = this.sort.date <= 0 ? 1 : -1;
     this.sort.views = 0;
-    this.setSort.emit(this.sort);
+    this.sortingService.sortObj = this.sort;
   }
 
   changeViewsDirection() {
     this.sort.views = this.sort.views <= 0 ? 1 : -1;
     this.sort.date = 0;
-    this.setSort.emit(this.sort);
+    this.sortingService.sortObj = this.sort;
   }
 
   setFilterTerm(event: Event) {
     if (event instanceof InputEvent) {
-      const termString = (event.target as HTMLInputElement).value as string;
-      this.setFilter.emit(termString);
+      this.sortingService.filterTerm = (event.target as HTMLInputElement)
+        .value as string;
     }
   }
-}
-
-export interface Sort {
-  date: number;
-  views: number;
 }
