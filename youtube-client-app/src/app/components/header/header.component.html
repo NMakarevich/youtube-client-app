@@ -6,7 +6,9 @@
       <span class="material-symbols-outlined">tune</span>
     </app-button>
   </div>
-  <app-sorting-settings (setSortFilter)='getSortFilter($event)' [ngClass]='settingsIsOpen ? "open" : ""'></app-sorting-settings>
+  <div class='container-sorting' [class.open]='settingsIsOpen'>
+    <app-sorting-settings (setSortFilter)='getSortFilter($event)'></app-sorting-settings>
+  </div>
   <div class='auth'>
     <span class='auth-username'>Your name</span>
     <button class='auth-button' type='button'>

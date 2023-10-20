@@ -22,6 +22,16 @@
     align-items: center;
     width: 100%;
   }
+
+  &-sorting {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s;
+
+    &.open {
+      max-height: 50px;
+    }
+  }
 }
 
 .header-logo {
