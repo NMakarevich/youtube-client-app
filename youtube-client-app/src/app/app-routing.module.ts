@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { NotFoundPageComponent } from './core/pages/not-found-page/not-found-page.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,8 @@ const routes: Routes = [
     loadChildren: () =>
       import('./youtube/youtube.module').then((m) => m.YoutubeModule),
   },
+  { path: '404', component: NotFoundPageComponent },
+  { path: '**', redirectTo: '404' },
 ];
 
 @NgModule({
