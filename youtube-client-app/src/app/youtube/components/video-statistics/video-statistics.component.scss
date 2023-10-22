@@ -1,0 +1,21 @@
+:host {
+  width: 100%;
+}
+
+.video-statistics {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  list-style: none;
+
+  &-item {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    font-size: 12px;
+
+    .material-symbols-outlined {
+      font-size: 12px;
+    }
+  }
+}

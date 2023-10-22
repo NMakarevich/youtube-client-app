@@ -2,20 +2,7 @@
   <div class='card-thumbnail'>
     <img [src]='item.snippet.thumbnails.default.url' alt='thumbnail'>
   </div>
-  <ul class='card-statistics'>
-    <li class='card-statistics-item'>
-      <span class="material-symbols-outlined">visibility</span> {{item.statistics.viewCount}}
-    </li>
-    <li class='card-statistics-item'>
-      <span class="material-symbols-outlined">thumb_up</span> {{item.statistics.likeCount}}
-    </li>
-    <li class='card-statistics-item'>
-      <span class="material-symbols-outlined">thumb_down</span> {{item.statistics.dislikeCount}}
-    </li>
-    <li class='card-statistics-item'>
-      <span class="material-symbols-outlined">comment</span> {{item.statistics.commentCount}}
-    </li>
-  </ul>
+  <app-video-statistics [statistics]='item.statistics'></app-video-statistics>
   <h2 class='card-title'>{{item.snippet.title}}</h2>
-  <app-button class='card-more'>more...</app-button>
+  <app-button class='card-more' (click)='navigateToDetailed(item.id)'>more...</app-button>
 </div>
