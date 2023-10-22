@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { ResultsItem } from './results-item';
 
 @Component({
@@ -8,4 +9,10 @@ import { ResultsItem } from './results-item';
 })
 export class ResultsItemComponent {
   @Input() item!: ResultsItem;
+
+  constructor(private readonly router: Router) {}
+
+  navigateToDetailed(id: string) {
+    this.router.navigate([this.router.url, 'video', id]).then((r) => r);
+  }
 }

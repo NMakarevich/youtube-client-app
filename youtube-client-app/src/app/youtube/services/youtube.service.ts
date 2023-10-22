@@ -20,4 +20,8 @@ export class YoutubeService {
   get filter() {
     return this.sortingService.filter;
   }
+
+  getVideoById(id: string) {
+    return this.searchService.resultsObj.items.find((item) => item.id === id);
+  }
 }

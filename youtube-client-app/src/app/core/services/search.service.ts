@@ -6,6 +6,8 @@ import { results } from '../../mock/mock';
 export class SearchService {
   responseObj!: SearchResponse;
 
+  results = results;
+
   search(searchTerm: string) {
     if (!searchTerm) return;
     this.responseObj = results;
@@ -13,5 +15,9 @@ export class SearchService {
 
   get response() {
     return this.responseObj;
+  }
+
+  get resultsObj() {
+    return this.results;
   }
 }

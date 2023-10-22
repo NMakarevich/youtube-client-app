@@ -8,7 +8,7 @@ describe('VideoStatisticsComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [VideoStatisticsComponent]
+      imports: [VideoStatisticsComponent],
     });
     fixture = TestBed.createComponent(VideoStatisticsComponent);
     component = fixture.componentInstance;
