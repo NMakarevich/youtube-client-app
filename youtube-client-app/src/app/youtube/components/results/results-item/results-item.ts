@@ -25,17 +25,19 @@ export interface ResultsItem {
     };
     defaultAudioLanguage: string;
   };
-  statistics: {
-    viewCount: string;
-    likeCount: string;
-    dislikeCount: string;
-    favoriteCount: string;
-    commentCount: string;
-  };
+  statistics: Statistics;
 }
 
 interface Thumbnail {
   url: string;
   width: number;
   height: number;
+}
+
+export interface Statistics {
+  viewCount: string;
+  likeCount: string;
+  dislikeCount: string;
+  favoriteCount: string;
+  commentCount: string;
 }
