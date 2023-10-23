@@ -1,0 +1,52 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 450px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #F2F2F2;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  &-field {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    &-label {
+      color: #828282;
+    }
+
+    &-input {
+      padding: 5px;
+      background-color: #E0E0E0;
+      border: none;
+    }
+  }
+
+  &-submit {
+    margin-left: auto;
+    padding: 10px;
+    width: 150px;
+    background-color: #1E88E5;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    transition: box-shadow 0.4s;
+
+    &:hover {
+      box-shadow: 0 0 3px 3px #2196F3;
+    }
+
+    &:active {
+      font-weight: 700;
+    }
+  }
+}

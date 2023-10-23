@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { AuthService } from '../../../auth/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +9,17 @@ import { Component } from '@angular/core';
 export class HeaderComponent {
   settingsIsOpen = false;
 
+  private authService = inject(AuthService);
+
   toggleSettings() {
     this.settingsIsOpen = !this.settingsIsOpen;
+  }
+
+  get isAuth() {
+    return this.authService.isLoggedIn;
+  }
+
+  logout() {
+    this.authService.logout();
   }
 }

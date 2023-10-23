@@ -10,9 +10,14 @@
     <app-sorting-settings></app-sorting-settings>
   </div>
   <div class='auth'>
-    <span class='auth-username'>Your name</span>
-    <button class='auth-button' type='button'>
+    <ng-container *ngIf='isAuth'>
+      <span class='auth-username'>Your name</span>
+      <button class='auth-button' type='button' (click)='logout()'>
+        <span class='material-symbols-outlined'>logout</span>
+      </button>
+    </ng-container>
+    <ng-container *ngIf='!isAuth'>
       <span class='material-symbols-outlined'>account_circle</span>
-    </button>
+    </ng-container>
   </div>
 </div>

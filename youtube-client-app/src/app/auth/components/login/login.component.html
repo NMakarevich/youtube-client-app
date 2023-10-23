@@ -1,0 +1,12 @@
+<h2>Login</h2>
+<form [formGroup]='loginForm' (ngSubmit)='submit()' class='form'>
+  <div class='form-field'>
+    <label for='login' class='form-field-label'>login</label>
+    <input class='form-field-input' type='text' name='login' id='login' formControlName='login' autocomplete='true'>
+  </div>
+  <div class='form-field'>
+    <label for='password' class='form-field-label'>password</label>
+    <input class='form-field-input' type='password' name='password' id='password' formControlName='password' autocomplete='false'>
+  </div>
+  <button type='submit' class='form-submit'>Login</button>
+</form>
