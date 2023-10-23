@@ -1,20 +1,22 @@
-<a routerLink='/main' class='back' appColorize [date]='video.snippet.publishedAt' [style]='"background-color"'>
-  <span class="material-symbols-outlined">arrow_back_ios</span>
-</a>
-<div class='detailed'>
-  <div class='detailed-image'>
-    <img [src]='video.snippet.thumbnails.standard.url' alt='video-thumbnail'>
-  </div>
-  <div class='detailed-info' appColorize [date]='video.snippet.publishedAt' [style]='"border-bottom"'>
-    <header class='detailed-header'>
-      <h2 class='detailed-header-title'>{{video.snippet.title}}</h2>
-      <span class='detailed-header-date'>{{video.snippet.publishedAt | date: 'fullDate'}}</span>
-    </header>
-    <div class='detailed-description'>
-      <h3>Description:</h3>
-      <p class='detailed-description-text'>{{video.snippet.description}}</p>
+<ng-container *ngIf='video'>
+  <a routerLink='' class='back' appColorize [date]='video.snippet.publishedAt' [style]='"background-color"'>
+    <span class="material-symbols-outlined">arrow_back_ios</span>
+  </a>
+  <div class='detailed'>
+    <div class='detailed-image'>
+      <img [src]='video.snippet.thumbnails.standard.url' alt='video-thumbnail'>
     </div>
-    <app-video-statistics [statistics]='video.statistics' class='detailed-statistics'></app-video-statistics>
+    <div class='detailed-info' appColorize [date]='video.snippet.publishedAt' [style]='"border-bottom"'>
+      <header class='detailed-header'>
+        <h2 class='detailed-header-title'>{{video.snippet.title}}</h2>
+        <span class='detailed-header-date'>{{video.snippet.publishedAt | date: 'fullDate'}}</span>
+      </header>
+      <div class='detailed-description'>
+        <h3>Description:</h3>
+        <p class='detailed-description-text'>{{video.snippet.description}}</p>
+      </div>
+      <app-video-statistics [statistics]='video.statistics' class='detailed-statistics'></app-video-statistics>
+    </div>
   </div>
-</div>
+</ng-container>
 

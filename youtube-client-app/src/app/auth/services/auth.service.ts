@@ -10,7 +10,7 @@ export class AuthService {
   login() {
     this.isLoggedIn = true;
     localStorage.setItem('fake-token', 'token');
-    this.router.navigate(['main']).then((r) => r);
+    this.router.navigate(['']).then((r) => r);
   }
 
   logout() {
