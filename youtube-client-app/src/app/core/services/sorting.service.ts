@@ -2,15 +2,24 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class SortingService {
-  sort!: Sort;
+  sort: Sort = {
+    date: 0,
+    views: 0,
+  };
 
   filter!: string;
 
-  set sortObj(sort: Sort) {
-    this.sort = sort;
+  changeDateDirection() {
+    this.sort.date = this.sort.date <= 0 ? 1 : -1;
+    this.sort.views = 0;
   }
 
-  get sortObj() {
+  changeViewsDirection() {
+    this.sort.views = this.sort.views <= 0 ? 1 : -1;
+    this.sort.date = 0;
+  }
+
+  get sortParams() {
     return this.sort;
   }
 

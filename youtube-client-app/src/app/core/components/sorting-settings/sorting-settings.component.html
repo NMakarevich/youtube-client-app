@@ -3,5 +3,5 @@
 <button class='sorting-param' (click)='changeViewsDirection()'>count of views</button>
 <div class='sorting-filter'>
   <label class='sorting-filter-label' for='filter'>word or sentence</label>
-  <input class='sorting-filter-input' type='text' name='filter' id='filter' (input)='setFilterTerm($event)'>
+  <input class='sorting-filter-input' type='text' name='filter' id='filter' [(ngModel)]='filterTerm' (input)='setFilterTerm()'>
 </div>

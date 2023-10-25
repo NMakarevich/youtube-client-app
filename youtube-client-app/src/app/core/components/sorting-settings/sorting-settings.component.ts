@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Sort, SortingService } from '../../services/sorting.service';
+import { SortingService } from '../../services/sorting.service';
 
 @Component({
   selector: 'app-sorting-settings',
@@ -7,29 +7,19 @@ import { Sort, SortingService } from '../../services/sorting.service';
   styleUrls: ['./sorting-settings.component.scss'],
 })
 export class SortingSettingsComponent {
-  sort: Sort = {
-    date: 0,
-    views: 0,
-  };
+  filterTerm!: string;
 
   constructor(private readonly sortingService: SortingService) {}
 
   changeDateDirection() {
-    this.sort.date = this.sort.date <= 0 ? 1 : -1;
-    this.sort.views = 0;
-    this.sortingService.sortObj = this.sort;
+    this.sortingService.changeDateDirection();
   }
 
   changeViewsDirection() {
-    this.sort.views = this.sort.views <= 0 ? 1 : -1;
-    this.sort.date = 0;
-    this.sortingService.sortObj = this.sort;
+    this.sortingService.changeViewsDirection();
   }
 
-  setFilterTerm(event: Event) {
-    if (event instanceof InputEvent) {
-      this.sortingService.filterTerm = (event.target as HTMLInputElement)
-        .value as string;
-    }
+  setFilterTerm() {
+    this.sortingService.filterTerm = this.filterTerm;
   }
 }
