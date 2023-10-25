@@ -7,7 +7,7 @@ import { SortingService } from '../../services/sorting.service';
   styleUrls: ['./sorting-settings.component.scss'],
 })
 export class SortingSettingsComponent {
-  filterTerm!: string;
+  filterTerm = '';
 
   constructor(private readonly sortingService: SortingService) {}
 
