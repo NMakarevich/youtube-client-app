@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class SortingService {
-  sort: Sort = {
+  sort: SortParam = {
     date: 0,
     views: 0,
   };
@@ -32,7 +32,7 @@ export class SortingService {
   }
 }
 
-export interface Sort {
+export interface SortParam {
   date: number;
   views: number;
 }
