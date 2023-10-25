@@ -11,6 +11,7 @@ const routes: Routes = [
   },
   {
     path: 'video/:id',
+    title: 'Video details',
     component: DetailedPageComponent,
   },
 ];

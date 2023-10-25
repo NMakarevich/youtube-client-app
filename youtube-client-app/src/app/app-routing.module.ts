@@ -6,6 +6,7 @@ import { authGuard } from './auth/guards/auth.guard';
 const routes: Routes = [
   {
     path: '',
+    title: 'Search Video',
     loadChildren: () =>
       import('./youtube/youtube.module').then((m) => m.YoutubeModule),
     canActivate: [authGuard],
@@ -14,7 +15,7 @@ const routes: Routes = [
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
-  { path: '404', component: NotFoundPageComponent },
+  { path: '404', title: 'Page not found', component: NotFoundPageComponent },
   { path: '**', redirectTo: '404' },
 ];
 
