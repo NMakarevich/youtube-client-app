@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { ResultsItem } from '../components/results/results-item/results-item';
+import { ResultsItem } from '../components/results/results-item/results-item.model';
 import { Sort } from '../../core/services/sorting.service';
 
 @Pipe({

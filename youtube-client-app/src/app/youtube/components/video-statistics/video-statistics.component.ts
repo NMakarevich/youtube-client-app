@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Statistics } from '../results/results-item/results-item';
+import { Statistics } from '../results/results-item/results-item.model';
 
 @Component({
   selector: 'app-video-statistics',

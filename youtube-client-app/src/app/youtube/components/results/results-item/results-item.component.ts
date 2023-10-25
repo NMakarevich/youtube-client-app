@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { ResultsItem } from './results-item';
+import { ResultsItem } from './results-item.model';
 
 @Component({
   selector: 'app-results-item',

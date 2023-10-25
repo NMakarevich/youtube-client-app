@@ -1,4 +1,4 @@
-import { SearchResponse } from '../core/components/search/search-response';
+import { SearchResponse } from '../core/components/search/search-response.model';
 
 export const results: SearchResponse = {
   kind: 'youtube#videoListResponse',

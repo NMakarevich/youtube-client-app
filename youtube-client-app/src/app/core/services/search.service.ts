@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { SearchResponse } from '../components/search/search-response';
+import { SearchResponse } from '../components/search/search-response.model';
 import { results } from '../../mock/mock';
 
 @Injectable()

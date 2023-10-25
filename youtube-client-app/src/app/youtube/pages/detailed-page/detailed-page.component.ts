@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ResultsItem } from '../../components/results/results-item/results-item';
+import { ResultsItem } from '../../components/results/results-item/results-item.model';
 import { YoutubeService } from '../../services/youtube.service';
 
 @Component({

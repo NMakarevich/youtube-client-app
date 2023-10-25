@@ -1,4 +1,4 @@
-import { ResultsItem } from '../../../youtube/components/results/results-item/results-item';
+import { ResultsItem } from '../../../youtube/components/results/results-item/results-item.model';
 
 export interface SearchResponse {
   kind: string;
