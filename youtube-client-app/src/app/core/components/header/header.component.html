@@ -10,13 +10,13 @@
     <app-sorting-settings></app-sorting-settings>
   </div>
   <div class='auth'>
-    <ng-container *ngIf='isAuth'>
+    <ng-container *ngIf='(isAuth | async)'>
       <span class='auth-username'>Your name</span>
       <button class='auth-button' type='button' (click)='logout()'>
         <span class='material-symbols-outlined'>logout</span>
       </button>
     </ng-container>
-    <ng-container *ngIf='!isAuth'>
+    <ng-container *ngIf='(isAuth | async) === false'>
       <span class='material-symbols-outlined'>login</span>
     </ng-container>
   </div>

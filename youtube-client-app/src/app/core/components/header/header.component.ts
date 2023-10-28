@@ -11,12 +11,12 @@ export class HeaderComponent {
 
   private authService = inject(AuthService);
 
-  toggleSettings() {
-    this.settingsIsOpen = !this.settingsIsOpen;
+  get isAuth() {
+    return this.authService.auth;
   }
 
-  get isAuth() {
-    return this.authService.isLoggedIn;
+  toggleSettings() {
+    this.settingsIsOpen = !this.settingsIsOpen;
   }
 
   logout() {
