@@ -41,3 +41,8 @@ export interface Statistics {
   favoriteCount: string;
   commentCount: string;
 }
+
+export interface VideosResponse {
+  kind: string;
+  items: ResultsItem[];
+}

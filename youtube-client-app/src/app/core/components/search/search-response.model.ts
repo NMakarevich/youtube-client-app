@@ -1,5 +1,3 @@
-import { ResultsItem } from '../../../youtube/components/results/results-item/results-item.model';
-
 export interface SearchResponse {
   kind: string;
   etag: string;
@@ -7,5 +5,11 @@ export interface SearchResponse {
     totalResults: number;
     resultsPerPage: number;
   };
-  items: ResultsItem[];
+  items: Items[];
+}
+
+interface Items {
+  id: {
+    videoId: string;
+  };
 }
