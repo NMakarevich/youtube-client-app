@@ -15,9 +15,9 @@ enum COLORS {
   selector: '[appColorize]',
 })
 export class ColorizeDirective implements OnInit {
-  @Input() date!: string;
+  @Input() date = '';
 
-  @Input() style!: string;
+  @Input() style = '';
 
   constructor(
     private readonly elemRef: ElementRef,
