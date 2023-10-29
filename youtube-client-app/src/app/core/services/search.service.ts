@@ -6,6 +6,7 @@ import {
   ResultsItem,
   VideosResponse,
 } from '../../youtube/components/results/results-item/results-item.model';
+import { MAX_RESULTS } from '../consts';
 
 @Injectable()
 export class SearchService {
@@ -16,7 +17,7 @@ export class SearchService {
   search(searchTerm: string): void {
     const httpParams = {
       q: searchTerm,
-      maxResults: 20,
+      maxResults: MAX_RESULTS,
     };
     const params = new HttpParams({
       fromObject: httpParams,

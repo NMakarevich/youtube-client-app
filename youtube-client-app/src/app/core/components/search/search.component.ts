@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { debounceTime, filter, of } from 'rxjs';
 import { SearchService } from '../../services/search.service';
+import { DEBOUNCE_TIME, MIN_SEARCH_LENGTH } from '../../consts';
 
 @Component({
   selector: 'app-search',
@@ -15,8 +16,8 @@ export class SearchComponent {
   search(): void {
     of(this.searchTerm)
       .pipe(
-        filter((value) => value.length >= 3),
-        debounceTime(500)
+        filter((value) => value.length >= MIN_SEARCH_LENGTH),
+        debounceTime(DEBOUNCE_TIME)
       )
       .subscribe((value) => this.searchService.search(value));
   }
