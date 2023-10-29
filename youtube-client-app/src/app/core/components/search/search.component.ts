@@ -1,4 +1,5 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
+import { debounceTime, filter, of } from 'rxjs';
 import { SearchService } from '../../services/search.service';
 
 @Component({
@@ -7,12 +8,16 @@ import { SearchService } from '../../services/search.service';
   styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent {
-  @ViewChild('searchInput') searchInput!: ElementRef;
+  searchTerm = '';
 
   constructor(private readonly searchService: SearchService) {}
 
   search() {
-    const searchTerm = this.searchInput.nativeElement.value;
-    if (searchTerm.length) this.searchService.search(searchTerm);
+    of(this.searchTerm)
+      .pipe(
+        filter((value) => value.length >= 3),
+        debounceTime(500)
+      )
+      .subscribe((value) => this.searchService.search(value));
   }
 }

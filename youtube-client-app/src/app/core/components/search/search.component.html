@@ -3,5 +3,6 @@
        name='searchTerm'
        id='searchTerm'
        placeholder='Input what you want to search'
-       #searchInput>
-<app-button class='search-button' (click)='search()'>Search!</app-button>
+       (input)='search()'
+       [(ngModel)]='searchTerm'
+       >

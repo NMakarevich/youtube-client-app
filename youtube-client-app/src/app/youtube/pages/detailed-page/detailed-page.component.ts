@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ResultsItem } from '../../components/results/results-item/results-item.model';
-import { YoutubeService } from '../../services/youtube.service';
+import { SearchService } from '../../../core/services/search.service';
 
 @Component({
   selector: 'app-detailed-page',
@@ -14,16 +14,18 @@ export class DetailedPageComponent implements OnInit {
   constructor(
     private readonly router: Router,
     private readonly route: ActivatedRoute,
-    private readonly youtubeService: YoutubeService
+    private readonly searchService: SearchService
   ) {}
 
   ngOnInit() {
     this.route.paramMap.subscribe((param) => {
       const id = param.get('id');
       if (id) {
-        const video = this.youtubeService.getVideoById(id);
-        if (video) this.video = video;
-        else this.router.navigate(['404']).then((r) => r);
+        this.searchService.getInfoByIds([id]).subscribe((results) => {
+          if (results.length === 0)
+            this.router.navigate(['404']).then((r) => r);
+          else [this.video] = results;
+        });
       } else this.router.navigate(['404']).then((r) => r);
     });
   }

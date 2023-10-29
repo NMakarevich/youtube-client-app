@@ -9,8 +9,8 @@ import { YoutubeService } from '../../../services/youtube.service';
 export class ResultsListComponent {
   constructor(private readonly youtubeService: YoutubeService) {}
 
-  get results() {
-    return this.youtubeService.response;
+  get results$() {
+    return this.youtubeService.results$;
   }
 
   get sort() {

@@ -9,8 +9,8 @@ export class YoutubeService {
     private readonly sortingService: SortingService
   ) {}
 
-  get response() {
-    return this.searchService.response;
+  get results$() {
+    return this.searchService.response$;
   }
 
   get sort() {
@@ -19,9 +19,5 @@ export class YoutubeService {
 
   get filter() {
     return this.sortingService.filter;
-  }
-
-  getVideoById(id: string) {
-    return this.searchService.resultsObj.items.find((item) => item.id === id);
   }
 }
