@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import { SortingService } from '../../core/services/sorting.service';
+import { Observable } from 'rxjs';
+import { SortingService, SortParam } from '../../core/services/sorting.service';
 import { SearchService } from '../../core/services/search.service';
+import { ResultsItem } from '../components/results/results-item/results-item.model';
 
 @Injectable()
 export class YoutubeService {
@@ -9,15 +11,15 @@ export class YoutubeService {
     private readonly sortingService: SortingService
   ) {}
 
-  get results$() {
+  get results$(): Observable<ResultsItem[]> {
     return this.searchService.response$;
   }
 
-  get sort() {
-    return this.sortingService.sort;
+  get sort(): SortParam {
+    return this.sortingService.sortParams;
   }
 
-  get filter() {
-    return this.sortingService.filter;
+  get filter(): string {
+    return this.sortingService.filterTerm;
   }
 }

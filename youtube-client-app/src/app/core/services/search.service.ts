@@ -13,7 +13,7 @@ export class SearchService {
 
   constructor(private readonly http: HttpClient) {}
 
-  search(searchTerm: string) {
+  search(searchTerm: string): void {
     const httpParams = {
       q: searchTerm,
       maxResults: 20,
@@ -30,7 +30,7 @@ export class SearchService {
     );
   }
 
-  getInfoByIds(ids: string[]) {
+  getInfoByIds(ids: string[]): Observable<ResultsItem[]> {
     const parts = ['snippet', 'statistics'];
     const httpParams = {
       part: parts,
@@ -42,7 +42,7 @@ export class SearchService {
       .pipe(map((data) => data.items));
   }
 
-  get response$() {
+  get response$(): Observable<ResultsItem[]> {
     return this.results$;
   }
 }

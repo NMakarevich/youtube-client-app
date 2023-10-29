@@ -1,4 +1,5 @@
 import { Component, inject } from '@angular/core';
+import { Observable } from 'rxjs';
 import { AuthService } from '../../../auth/services/auth.service';
 
 @Component({
@@ -11,15 +12,15 @@ export class HeaderComponent {
 
   private authService = inject(AuthService);
 
-  get isAuth() {
+  get isAuth(): Observable<boolean> {
     return this.authService.auth;
   }
 
-  toggleSettings() {
+  toggleSettings(): void {
     this.settingsIsOpen = !this.settingsIsOpen;
   }
 
-  logout() {
+  logout(): void {
     this.authService.logout();
   }
 }

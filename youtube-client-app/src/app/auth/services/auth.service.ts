@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 enum LocalStorageEnum {
   FAKE_TOKEN = 'fake-token',
@@ -14,17 +14,17 @@ export class AuthService {
 
   constructor(private readonly router: Router) {}
 
-  get auth() {
+  get auth(): Observable<boolean> {
     return this.isAuth;
   }
 
-  login() {
+  login(): void {
     this.isAuth.next(true);
     localStorage.setItem(LocalStorageEnum.FAKE_TOKEN, 'token');
     this.router.navigate(['']).then((r) => r);
   }
 
-  logout() {
+  logout(): void {
     this.isAuth.next(false);
     localStorage.removeItem(LocalStorageEnum.FAKE_TOKEN);
     this.router.navigate(['auth/login']).then((r) => r);

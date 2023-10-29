@@ -7,19 +7,19 @@ export class SortingService {
     views: 0,
   };
 
-  filter!: string;
+  filter = '';
 
-  changeDateDirection() {
+  changeDateDirection(): void {
     this.sort.date = this.sort.date <= 0 ? 1 : -1;
     this.sort.views = 0;
   }
 
-  changeViewsDirection() {
+  changeViewsDirection(): void {
     this.sort.views = this.sort.views <= 0 ? 1 : -1;
     this.sort.date = 0;
   }
 
-  get sortParams() {
+  get sortParams(): SortParam {
     return this.sort;
   }
 
@@ -27,7 +27,7 @@ export class SortingService {
     this.filter = filter;
   }
 
-  get filterTerm() {
+  get filterTerm(): string {
     return this.filter;
   }
 }

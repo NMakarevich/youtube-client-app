@@ -12,7 +12,7 @@ export class SearchComponent {
 
   constructor(private readonly searchService: SearchService) {}
 
-  search() {
+  search(): void {
     of(this.searchTerm)
       .pipe(
         filter((value) => value.length >= 3),

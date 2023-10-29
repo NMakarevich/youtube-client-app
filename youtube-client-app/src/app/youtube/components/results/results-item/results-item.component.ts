@@ -12,7 +12,7 @@ export class ResultsItemComponent {
 
   constructor(private readonly router: Router) {}
 
-  navigateToDetailed(id: string) {
+  navigateToDetailed(id: string): void {
     this.router.navigate([this.router.url, 'video', id]).then((r) => r);
   }
 }

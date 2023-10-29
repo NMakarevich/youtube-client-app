@@ -18,7 +18,7 @@ export class LoginComponent {
     private readonly authService: AuthService
   ) {}
 
-  submit() {
+  submit(): void {
     this.authService.login();
   }
 }

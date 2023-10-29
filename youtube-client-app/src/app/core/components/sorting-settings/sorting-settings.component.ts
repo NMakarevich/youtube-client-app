@@ -11,15 +11,15 @@ export class SortingSettingsComponent {
 
   constructor(private readonly sortingService: SortingService) {}
 
-  changeDateDirection() {
+  changeDateDirection(): void {
     this.sortingService.changeDateDirection();
   }
 
-  changeViewsDirection() {
+  changeViewsDirection(): void {
     this.sortingService.changeViewsDirection();
   }
 
-  setFilterTerm() {
+  setFilterTerm(): void {
     this.sortingService.filterTerm = this.filterTerm;
   }
 }
