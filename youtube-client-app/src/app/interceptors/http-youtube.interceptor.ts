@@ -15,7 +15,6 @@ export class HttpYoutubeInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    if (request.url.includes('video/')) return next.handle(request);
     return next.handle(
       request.clone({
         url: `${environment.baseURL}${request.url}`,
