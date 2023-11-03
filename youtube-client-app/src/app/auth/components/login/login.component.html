@@ -4,40 +4,40 @@
     <label for='login' class='form-field-label'>login</label>
     <input class='form-field-input' type='text' name='login' id='login' formControlName='login' autocomplete='true'>
     <div class='validation' *ngIf='login.invalid && (login.dirty || login.touched)'>
-      <p class='validation-title' *ngIf='login.errors?.["email"]'>
-        login email is invalid
-      </p>
-      <p class='validation-title' *ngIf='login.errors?.["required"]'>
-        Please enter a login email
-      </p>
+      <ul class='validation-messages'>
+        <li class='validation-title' *ngIf='login.errors?.["email"]'>
+          login email is invalid
+        </li>
+        <li class='validation-title' *ngIf='login.errors?.["required"]'>
+          Please enter a login email
+        </li>
+      </ul>
     </div>
   </div>
   <div class='form-field'>
     <label for='password' class='form-field-label'>password</label>
     <input class='form-field-input' type='password' name='password' id='password' formControlName='password' autocomplete='false'>
     <div class='validation' *ngIf='password.invalid && (password.dirty || password.touched)'>
-      <p class='validation-titles' *ngIf='password.errors?.["required"]'>
-        Please enter a password
-      </p>
-      <ng-container *ngIf='password.errors?.["validatePassword"] && password.value'>
-        <p class='validation-title'>
-          {{password.errors?.["validatePassword"].message}}
-        </p>
-        <ul class='validation-requirements'>
-          <li class='validation-requirement' *ngIf='password.errors?.["validatePassword"].errors?.["length"]'>
-            at least 8 characters
-          </li>
-          <li class='validation-requirement' *ngIf='password.errors?.["validatePassword"].errors?.["upperAndLowerCase"]'>
-            a mixture of both uppercase and lowercase letters
-          </li>
-          <li class='validation-requirement' *ngIf='password.errors?.["validatePassword"].errors?.["digits"]'>
-            a mixture of letters and numbers
-          </li>
-          <li class='validation-requirement' *ngIf='password.errors?.["validatePassword"].errors?.["symbols"]'>
-            inclusion of at least one special character, e.g., ! @ # ?
-          </li>
-        </ul>
-      </ng-container>
+      <ul class='validation-messages'>
+        <li class='validation-message' *ngIf='password.errors?.["required"]'>
+          Please enter a password
+        </li>
+        <li class='validation-message' *ngIf='password.errors?.["passwordStrong"]'>
+          {{password.errors?.["passwordStrong"].message}}
+        </li>
+        <li class='validation-message' *ngIf='password.errors?.["passwordLength"]'>
+          {{password.errors?.["passwordLength"].message}}
+        </li>
+        <li class='validation-message' *ngIf='password.errors?.["passwordLettersCase"]'>
+          {{password.errors?.["passwordLettersCase"].message}}
+        </li>
+        <li class='validation-message' *ngIf='password.errors?.["passwordDigits"]'>
+          {{password.errors?.["passwordDigits"].message}}
+        </li>
+        <li class='validation-message' *ngIf='password.errors?.["passwordSpecialChars"]'>
+          {{password.errors?.["passwordSpecialChars"].message}}
+        </li>
+      </ul>
     </div>
   </div>
   <button type='submit' class='form-button form-submit' [disabled]='loginForm.invalid'>Login</button>

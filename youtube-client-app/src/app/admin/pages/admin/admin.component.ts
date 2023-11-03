@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
 import {
-  AbstractControl,
   FormArray,
   FormBuilder,
   FormControl,
   FormGroup,
-  ValidationErrors,
   Validators,
 } from '@angular/forms';
+import { validateDate, validateURL } from './utils/validators';
 
 interface CreateCardForm {
   title: FormControl<string>;
@@ -16,15 +15,6 @@ interface CreateCardForm {
   videoLink: FormControl<string>;
   creationDate: FormControl<string>;
   tags: FormArray<FormControl<string>>;
-}
-
-function validateDate(control: AbstractControl): ValidationErrors | null {
-  const { value } = control;
-  const dateFromValue = new Date(value).getTime();
-  const currentDate = new Date().getTime();
-  return dateFromValue > currentDate
-    ? { validateDate: { message: 'The date is invalid' } }
-    : null;
 }
 
 @Component({
@@ -39,8 +29,8 @@ export class AdminComponent {
       [Validators.required, Validators.minLength(3), Validators.maxLength(20)],
     ],
     description: ['', [Validators.maxLength(250)]],
-    coverLink: ['', [Validators.required]],
-    videoLink: ['', [Validators.required]],
+    coverLink: ['', [Validators.required, validateURL]],
+    videoLink: ['', [Validators.required, validateURL]],
     creationDate: ['', [Validators.required, validateDate]],
     tags: this.fb.nonNullable.array([['', [Validators.required]]]),
   });

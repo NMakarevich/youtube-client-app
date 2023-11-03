@@ -4,54 +4,70 @@
     <label for='title' class='form-field-label'>title</label>
     <input class='form-field-input' type='text' name='title' id='title' formControlName='title' autocomplete='false'>
     <div class='validation' *ngIf='title.invalid && (title.dirty || title?.touched)'>
-      <p class='validation-title' *ngIf='title.errors?.["required"]'>
-        Please enter a title
-      </p>
-      <p class='validation-title' *ngIf='title.errors?.["minlength"]'>
-        The title is too short
-      </p>
-      <p class='validation-title' *ngIf='title.errors?.["maxlength"]'>
-        The title is too long
-      </p>
+      <ul class='validation-messages'>
+        <li class='validation-message' *ngIf='title.errors?.["required"]'>
+          Please enter a title
+        </li>
+        <li class='validation-message' *ngIf='title.errors?.["minlength"]'>
+          The title is too short
+        </li>
+        <li class='validation-message' *ngIf='title.errors?.["maxlength"]'>
+          The title is too long
+        </li>
+      </ul>
     </div>
   </div>
   <div class='form-field'>
     <label for='description' class='form-field-label'>description</label>
     <input class='form-field-input' type='text' name='description' id='description' formControlName='description' autocomplete='false'>
     <div class='validation' *ngIf='description.invalid && (description.dirty || description?.touched)'>
-      <p class='validation-title' *ngIf='description.errors?.["maxlength"]'>
-        The description is too long
-      </p>
+      <ul class='validation-messages'>
+        <li class='validation-message' *ngIf='description.errors?.["maxlength"]'>
+          The description is too long
+        </li>
+      </ul>
     </div>
   </div>
   <div class='form-field'>
     <label for='cover-link' class='form-field-label'>cover link</label>
     <input class='form-field-input' type='text' name='cover-link' id='cover-link' formControlName='coverLink' autocomplete='false'>
     <div class='validation' *ngIf='coverLink.invalid && (coverLink.dirty || coverLink.touched)'>
-      <p class='validation-title' *ngIf='coverLink.errors?.["required"]'>
-        Please enter a link to the image
-      </p>
+      <ul class='validation-messages'>
+        <li class='validation-message' *ngIf='coverLink.errors?.["required"]'>
+          Please enter a link to the image
+        </li>
+        <li class='validation-message' *ngIf='coverLink.errors?.["validateURL"]'>
+          {{coverLink.errors?.["validateURL"].message}}
+        </li>
+      </ul>
     </div>
   </div>
   <div class='form-field'>
     <label for='video-link' class='form-field-label'>video link</label>
     <input class='form-field-input' type='text' name='video-link' id='video-link' formControlName='videoLink' autocomplete='false'>
     <div class='validation' *ngIf='videoLink.invalid && (videoLink.dirty || videoLink.touched)'>
-      <p class='validation-title' *ngIf='videoLink.errors?.["required"]'>
-        Please enter a link to the video
-      </p>
+      <ul class='validation-messages'>
+        <li class='validation-title' *ngIf='videoLink.errors?.["required"]'>
+          Please enter a link to the video
+        </li>
+        <li class='validation-title' *ngIf='videoLink.errors?.["validateURL"]'>
+          {{videoLink.errors?.["validateURL"].message}}
+        </li>
+      </ul>
     </div>
   </div>
   <div class='form-field'>
     <label for='creation-date' class='form-field-label'>creation date</label>
     <input class='form-field-input' type='date' name='creation-date' id='creation-date' formControlName='creationDate' autocomplete='false'>
     <div class='validation' *ngIf='creationDate.invalid && (creationDate.dirty || creationDate.touched)'>
-      <p class='validation-title' *ngIf='creationDate.errors?.["required"]'>
-        Please enter a creation date
-      </p>
-      <p class='validation-title' *ngIf='creationDate.errors?.["validateDate"]'>
-        {{creationDate.errors?.["validateDate"]?.message}}
-      </p>
+      <ul class='validation-messages'>
+        <p class='validation-message' *ngIf='creationDate.errors?.["required"]'>
+          Please enter a creation date
+        </p>
+        <p class='validation-message' *ngIf='creationDate.errors?.["validateDate"]'>
+          {{creationDate.errors?.["validateDate"]?.message}}
+        </p>
+      </ul>
     </div>
   </div>
   <div class='form-field-group'>
@@ -67,9 +83,11 @@
           <span class='material-symbols-outlined'>delete</span>
         </button>
         <div class='validation' *ngIf='tag.invalid && (tag.dirty || tag.touched)'>
-          <p class='validation-title'>
-            Please enter a tag
-          </p>
+          <ul class='validation-messages'>
+            <li class='validation-message'>
+              Please enter a tag
+            </li>
+          </ul>
         </div>
       </div>
     </div>

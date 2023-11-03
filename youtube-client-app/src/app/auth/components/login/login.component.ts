@@ -1,45 +1,22 @@
 import { Component } from '@angular/core';
 import {
-  AbstractControl,
   FormBuilder,
   FormControl,
   FormGroup,
-  ValidationErrors,
   Validators,
 } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
+import {
+  validatePasswordDigits,
+  validatePasswordLength,
+  validatePasswordLettersCase,
+  validatePasswordSpecialChars,
+  validatePasswordStrong,
+} from './utils/validators';
 
 interface Login {
   login: FormControl<string>;
   password: FormControl<string>;
-}
-
-function validatePassword(control: AbstractControl): ValidationErrors | null {
-  const { value } = control;
-  const errors = {
-    length: false,
-    upperAndLowerCase: false,
-    digits: false,
-    symbols: false,
-  };
-  if (
-    !/(?=.*[0-9])(?=.*[!@#?])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#?]{8,}/g.test(
-      value
-    )
-  ) {
-    if (value.length <= 8) errors.length = true;
-    if (!/(?=.*[a-z])(?=.*[A-Z])/g.test(value)) errors.upperAndLowerCase = true;
-    if (!/(?=.*[0-9])/g.test(value)) errors.digits = true;
-    if (!/(?=.*[!@#?])/g.test(value)) errors.symbols = true;
-    return {
-      validatePassword: {
-        message: "Your password isn't strong enough",
-        errors,
-      },
-    };
-  }
-
-  return null;
 }
 
 @Component({
@@ -50,7 +27,17 @@ function validatePassword(control: AbstractControl): ValidationErrors | null {
 export class LoginComponent {
   loginForm: FormGroup<Login> = this.fb.nonNullable.group({
     login: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required, validatePassword]],
+    password: [
+      '',
+      [
+        Validators.required,
+        validatePasswordStrong,
+        validatePasswordLength,
+        validatePasswordLettersCase,
+        validatePasswordDigits,
+        validatePasswordSpecialChars,
+      ],
+    ],
   });
 
   constructor(
