@@ -49,11 +49,11 @@ export class LoginComponent {
     this.authService.login();
   }
 
-  get login() {
+  get login(): FormControl<string> {
     return this.loginForm.controls.login;
   }
 
-  get password() {
+  get password(): FormControl<string> {
     return this.loginForm.controls.password;
   }
 }
