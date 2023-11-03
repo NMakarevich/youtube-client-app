@@ -1,0 +1,61 @@
+.form {
+
+  &-field {
+    width: 100%;
+
+    &-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    &-tag {
+      display: flex;
+      gap: 10px;
+      width: 100%;
+
+      .button {
+        border: none;
+        color: white;
+        transition: box-shadow 0.4s;
+
+        &:disabled {
+          opacity: 0.3;
+
+          &:hover {
+            box-shadow: none;
+          }
+        }
+      }
+
+      .button-add {
+        background-color: #2196F3;
+
+        &:hover {
+          box-shadow: 0 0 2px 2px #1E88E5;
+        }
+      }
+
+      .button-remove {
+        background-color: #EF5350;
+
+        &:hover {
+          box-shadow: 0 0 2px 2px #F44336;
+        }
+      }
+    }
+  }
+
+  .form-buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &-reset {
+    background-color: #F44336;
+
+    &:hover {
+      box-shadow: 0 0 3px 3px #EF5350;
+    }
+  }
+}
