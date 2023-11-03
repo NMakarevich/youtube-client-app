@@ -3,10 +3,42 @@
   <div class='form-field'>
     <label for='login' class='form-field-label'>login</label>
     <input class='form-field-input' type='text' name='login' id='login' formControlName='login' autocomplete='true'>
+    <div class='validation' *ngIf='login.invalid && (login.dirty || login.touched)'>
+      <p class='validation-title' *ngIf='login.errors?.["email"]'>
+        login email is invalid
+      </p>
+      <p class='validation-title' *ngIf='login.errors?.["required"]'>
+        Please enter a login email
+      </p>
+    </div>
   </div>
   <div class='form-field'>
     <label for='password' class='form-field-label'>password</label>
     <input class='form-field-input' type='password' name='password' id='password' formControlName='password' autocomplete='false'>
+    <div class='validation' *ngIf='password.invalid && (password.dirty || password.touched)'>
+      <p class='validation-titles' *ngIf='password.errors?.["required"]'>
+        Please enter a password
+      </p>
+      <ng-container *ngIf='password.errors?.["validatePassword"] && password.value'>
+        <p class='validation-title'>
+          {{password.errors?.["validatePassword"].message}}
+        </p>
+        <ul class='validation-requirements'>
+          <li class='validation-requirement' *ngIf='password.errors?.["validatePassword"].errors?.["length"]'>
+            at least 8 characters
+          </li>
+          <li class='validation-requirement' *ngIf='password.errors?.["validatePassword"].errors?.["upperAndLowerCase"]'>
+            a mixture of both uppercase and lowercase letters
+          </li>
+          <li class='validation-requirement' *ngIf='password.errors?.["validatePassword"].errors?.["digits"]'>
+            a mixture of letters and numbers
+          </li>
+          <li class='validation-requirement' *ngIf='password.errors?.["validatePassword"].errors?.["symbols"]'>
+            inclusion of at least one special character, e.g., ! @ # ?
+          </li>
+        </ul>
+      </ng-container>
+    </div>
   </div>
-  <button type='submit' class='form-submit'>Login</button>
+  <button type='submit' class='form-button form-submit' [disabled]='loginForm.invalid'>Login</button>
 </form>
