@@ -46,7 +46,7 @@ export class LoginComponent {
   ) {}
 
   submit(): void {
-    this.authService.login();
+    if (this.loginForm.valid) this.authService.login();
   }
 
   get login(): FormControl<string> {
