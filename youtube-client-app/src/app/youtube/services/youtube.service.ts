@@ -22,4 +22,12 @@ export class YoutubeService {
   get filter(): string {
     return this.sortingService.filterTerm;
   }
+
+  prevPage(): void {
+    this.searchService.prevPage();
+  }
+
+  nextPage(): void {
+    this.searchService.nextPage();
+  }
 }

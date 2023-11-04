@@ -1,3 +1,11 @@
 <ng-container *ngIf='results$ | async as results'>
-  <app-results-item *ngFor='let result of results | sort: sort | filter: filter' [item]='result'></app-results-item>
+  <div class='result-list'>
+    <app-results-item *ngFor='let result of results | sort: sort | filter: filter' [item]='result'></app-results-item>
+  </div>
+  <div class='pagination'>
+    <app-button class='pagination-button' (click)='prevPage()'>Prev page</app-button>
+    <app-button class='pagination-button' (click)='nextPage()'>Next page</app-button>
+  </div>
 </ng-container>
+
+

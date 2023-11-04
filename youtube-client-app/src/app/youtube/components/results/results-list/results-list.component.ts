@@ -23,4 +23,12 @@ export class ResultsListComponent {
   get filter(): string {
     return this.youtubeService.filter;
   }
+
+  prevPage(): void {
+    this.youtubeService.prevPage();
+  }
+
+  nextPage(): void {
+    this.youtubeService.nextPage();
+  }
 }
