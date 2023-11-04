@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { map, Observable, switchMap } from 'rxjs';
+import { concatAll, find, map, Observable, switchMap, take } from 'rxjs';
 import { SearchResponse } from '../components/search/search-response.model';
 import {
   ResultsItem,
@@ -41,6 +41,15 @@ export class SearchService {
     return this.http
       .get<VideosResponse>('/videos', { params })
       .pipe(map((data) => data.items));
+  }
+
+  getVideoById(id: string) {
+    if (this.results$)
+      return this.results$.pipe(
+        concatAll(),
+        find((item) => item.id === id)
+      );
+    return this.getInfoByIds([id]).pipe(concatAll(), take(1));
   }
 
   get response$(): Observable<ResultsItem[]> {

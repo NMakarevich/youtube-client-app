@@ -21,10 +21,9 @@ export class DetailedPageComponent implements OnInit {
     this.route.paramMap.subscribe((param) => {
       const id = param.get('id');
       if (id) {
-        this.searchService.getInfoByIds([id]).subscribe((results) => {
-          if (results.length === 0)
-            this.router.navigate(['404']).then((r) => r);
-          else [this.video] = results;
+        this.searchService.getVideoById(id).subscribe((result) => {
+          if (!result) this.router.navigate(['404']).then((r) => r);
+          else this.video = result;
         });
       } else this.router.navigate(['404']).then((r) => r);
     });
