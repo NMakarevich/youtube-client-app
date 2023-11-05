@@ -9,7 +9,9 @@
         "*.ts"
       ],
       "parserOptions": {
-        "project": ["tsconfig.json"]
+        "project": [
+          "tsconfig.json"
+        ]
       },
       "extends": [
         "airbnb-base",
@@ -39,7 +41,15 @@
         ],
         "@typescript-eslint/no-explicit-any": "error",
         "import/prefer-default-export": "off",
-        "class-methods-use-this": ["error", { "exceptMethods": ["transform", "intercept"] }]
+        "class-methods-use-this": [
+          "error",
+          {
+            "exceptMethods": [
+              "transform",
+              "intercept"
+            ]
+          }
+        ]
       }
     },
     {
@@ -51,6 +61,14 @@
         "plugin:@angular-eslint/template/accessibility"
       ],
       "rules": {}
+    },
+    {
+      "files": [
+        "*.ts"
+      ],
+      "extends": [
+        "plugin:@ngrx/recommended"
+      ]
     }
   ]
 }
