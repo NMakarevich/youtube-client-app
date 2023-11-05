@@ -27,7 +27,7 @@ export class SearchService {
       q: searchTerm,
       maxResults: MAX_RESULTS,
     };
-    if (pageToken) httpParams[pageToken] = pageToken;
+    if (pageToken) httpParams['pageToken'] = pageToken;
     const params = new HttpParams({
       fromObject: httpParams,
     });
