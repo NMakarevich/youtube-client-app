@@ -28,7 +28,7 @@ export class AdminComponent {
       '',
       [Validators.required, Validators.minLength(3), Validators.maxLength(20)],
     ],
-    description: ['', [Validators.maxLength(250)]],
+    description: ['', [Validators.maxLength(255)]],
     coverLink: ['', [Validators.required, validateURL]],
     videoLink: ['', [Validators.required, validateURL]],
     creationDate: ['', [Validators.required, validateDate]],
