@@ -6,7 +6,10 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Store } from '@ngrx/store';
 import { validateDate, validateURL } from './utils/validators';
+import { CustomCard } from './custom-card.model';
+import { createCustomCard } from '../../../redux/actions/custom-card.action';
 
 interface CreateCardForm {
   title: FormControl<string>;
@@ -35,7 +38,10 @@ export class AdminComponent {
     tags: this.fb.nonNullable.array([['', [Validators.required]]]),
   });
 
-  constructor(private readonly fb: FormBuilder) {}
+  constructor(
+    private readonly fb: FormBuilder,
+    private readonly store: Store
+  ) {}
 
   get title(): FormControl<string> {
     return this.createCardForm.controls.title;
@@ -67,6 +73,28 @@ export class AdminComponent {
 
   removeTag(index: number): void {
     this.createCardForm.controls.tags.removeAt(index);
+  }
+
+  submit() {
+    if (this.createCardForm.invalid) return;
+    const value = this.createCardForm.getRawValue();
+    const newCard: CustomCard = {
+      statistics: null,
+      snippet: {
+        title: value.title,
+        description: value.description,
+        videoLink: value.videoLink,
+        publishedAt: value.creationDate,
+        tags: value.tags,
+        thumbnails: {
+          default: {
+            url: value.coverLink,
+          },
+        },
+      },
+    };
+    this.store.dispatch(createCustomCard({ card: newCard }));
+    this.reset();
   }
 
   reset(): void {

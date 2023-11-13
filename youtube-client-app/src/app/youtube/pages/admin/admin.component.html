@@ -1,5 +1,5 @@
 <h2>Create card</h2>
-<form [formGroup]='createCardForm' class='form'>
+<form [formGroup]='createCardForm' class='form' (submit)='submit()'>
   <div class='form-field'>
     <label for='title' class='form-field-label'>title</label>
     <input class='form-field-input' type='text' name='title' id='title' formControlName='title' autocomplete='false'>
