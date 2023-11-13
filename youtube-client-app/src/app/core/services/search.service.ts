@@ -26,6 +26,7 @@ export class SearchService {
     const httpParams: { [p: string]: string | number } = {
       q: searchTerm,
       maxResults: MAX_RESULTS,
+      type: 'video',
     };
     if (pageToken) httpParams['pageToken'] = pageToken;
     const params = new HttpParams({
