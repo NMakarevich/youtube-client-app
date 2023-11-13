@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { debounceTime, filter, Subject } from 'rxjs';
-import { SearchService } from '../../services/search.service';
+import { Store } from '@ngrx/store';
 import { DEBOUNCE_TIME, MIN_SEARCH_LENGTH } from '../../consts';
+import { searchYoutubeCards } from '../../../redux/actions/youtube.action';
 
 @Component({
   selector: 'app-search',
@@ -13,7 +14,7 @@ export class SearchComponent implements OnInit {
 
   searchTerm = '';
 
-  constructor(private readonly searchService: SearchService) {}
+  constructor(private readonly store: Store) {}
 
   ngOnInit() {
     this.searchSubject
@@ -21,7 +22,9 @@ export class SearchComponent implements OnInit {
         filter((value) => value.length >= MIN_SEARCH_LENGTH),
         debounceTime(DEBOUNCE_TIME)
       )
-      .subscribe((searchTerm) => this.searchService.search(searchTerm));
+      .subscribe((searchTerm) =>
+        this.store.dispatch(searchYoutubeCards({ searchTerm }))
+      );
   }
 
   search(): void {

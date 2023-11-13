@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ResultsItem } from '../../components/results/results-item/results-item.model';
 import { SearchService } from '../../../core/services/search.service';
+import { CustomCard } from '../admin/custom-card.model';
 
 @Component({
   selector: 'app-detailed-page',
@@ -9,7 +10,7 @@ import { SearchService } from '../../../core/services/search.service';
   styleUrls: ['./detailed-page.component.scss'],
 })
 export class DetailedPageComponent implements OnInit {
-  video!: ResultsItem;
+  video!: ResultsItem | CustomCard;
 
   constructor(
     private readonly router: Router,

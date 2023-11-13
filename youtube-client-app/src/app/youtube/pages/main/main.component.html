@@ -1,1 +1,3 @@
-<app-results-list></app-results-list>
+<ng-container *ngIf='results$'>
+  <app-results-list [results$]='results$'></app-results-list>
+</ng-container>

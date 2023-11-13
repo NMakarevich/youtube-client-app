@@ -4,7 +4,7 @@
   </a>
   <div class='detailed'>
     <div class='detailed-image'>
-      <img [src]='video.snippet.thumbnails.standard.url' alt='video-thumbnail'>
+      <img [src]='video.snippet.thumbnails.default.url' alt='video-thumbnail'>
     </div>
     <div class='detailed-info' appColorize [date]='video.snippet.publishedAt' [style]='"border-bottom"'>
       <header class='detailed-header'>
@@ -15,7 +15,9 @@
         <h3>Description:</h3>
         <p class='detailed-description-text'>{{video.snippet.description}}</p>
       </div>
-      <app-video-statistics [statistics]='video.statistics' class='detailed-statistics'></app-video-statistics>
+      <ng-container *ngIf='video.statistics'>
+        <app-video-statistics [statistics]='video.statistics' class='detailed-statistics'></app-video-statistics>
+      </ng-container>
     </div>
   </div>
 </ng-container>

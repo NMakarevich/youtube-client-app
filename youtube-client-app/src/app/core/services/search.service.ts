@@ -1,26 +1,30 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { concatAll, find, map, Observable, switchMap, take } from 'rxjs';
+import { concatAll, map, Observable, of, switchMap, take } from 'rxjs';
+import { Store } from '@ngrx/store';
 import { SearchResponse } from '../components/search/search-response.model';
 import {
   ResultsItem,
   VideosResponse,
 } from '../../youtube/components/results/results-item/results-item.model';
 import { MAX_RESULTS } from '../consts';
+import {
+  nextYoutubeSearchPage,
+  prevYoutubePage,
+  storePageTokens,
+} from '../../redux/actions/youtube.action';
+import { selectAllCards } from '../../redux/selectors/all-cards.selector';
 
 @Injectable()
 export class SearchService {
-  results$!: Observable<ResultsItem[]>;
-
-  nextPageToken = '';
-
-  prevPageToken = '';
-
   searchTerm = '';
 
-  constructor(private readonly http: HttpClient) {}
+  constructor(
+    private readonly http: HttpClient,
+    private readonly store: Store
+  ) {}
 
-  search(searchTerm: string, pageToken = ''): void {
+  search(searchTerm: string, pageToken = '') {
     this.searchTerm = searchTerm;
 
     const httpParams: { [p: string]: string | number } = {
@@ -32,25 +36,23 @@ export class SearchService {
     const params = new HttpParams({
       fromObject: httpParams,
     });
-    this.results$ = this.http.get<SearchResponse>('/search', { params }).pipe(
+    return this.http.get<SearchResponse>('/search', { params }).pipe(
       map((data) => {
-        this.prevPageToken = data.prevPageToken ? data.prevPageToken : '';
-        this.nextPageToken = data.nextPageToken ? data.nextPageToken : '';
+        const { nextPageToken = '', prevPageToken = '' } = data;
+        this.store.dispatch(storePageTokens({ nextPageToken, prevPageToken }));
         return data.items;
       }),
-      map((items) =>
-        items.filter((item) => item.id.videoId).map((item) => item.id.videoId)
-      ),
+      map((items) => items.map((item) => item.id.videoId)),
       switchMap((ids) => this.getInfoByIds(ids))
     );
   }
 
   prevPage(): void {
-    if (this.prevPageToken) this.search(this.searchTerm, this.prevPageToken);
+    this.store.dispatch(prevYoutubePage());
   }
 
   nextPage(): void {
-    if (this.nextPageToken) this.search(this.searchTerm, this.nextPageToken);
+    this.store.dispatch(nextYoutubeSearchPage());
   }
 
   getInfoByIds(ids: string[]): Observable<ResultsItem[]> {
@@ -66,15 +68,17 @@ export class SearchService {
   }
 
   getVideoById(id: string) {
-    if (this.results$)
-      return this.results$.pipe(
-        concatAll(),
-        find((item) => item.id === id)
-      );
-    return this.getInfoByIds([id]).pipe(concatAll(), take(1));
+    return this.results$.pipe(
+      map((results) => results.find((result) => result.id === id)),
+      switchMap((item) => {
+        if (item) return of(item);
+        if (id.startsWith('custom')) return of(undefined);
+        return this.getInfoByIds([id]).pipe(concatAll(), take(1));
+      })
+    );
   }
 
-  get response$(): Observable<ResultsItem[]> {
-    return this.results$;
+  get results$() {
+    return this.store.select(selectAllCards);
   }
 }

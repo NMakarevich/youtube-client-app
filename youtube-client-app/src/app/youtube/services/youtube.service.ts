@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { SortingService, SortParam } from '../../core/services/sorting.service';
 import { SearchService } from '../../core/services/search.service';
 import { ResultsItem } from '../components/results/results-item/results-item.model';
+import { CustomCard } from '../pages/admin/custom-card.model';
 
 @Injectable()
 export class YoutubeService {
@@ -11,8 +12,8 @@ export class YoutubeService {
     private readonly sortingService: SortingService
   ) {}
 
-  get results$(): Observable<ResultsItem[]> {
-    return this.searchService.response$;
+  get results$(): Observable<(ResultsItem | CustomCard)[]> {
+    return this.searchService.results$;
   }
 
   get sort(): SortParam {

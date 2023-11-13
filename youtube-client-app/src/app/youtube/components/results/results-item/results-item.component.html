@@ -1,8 +1,13 @@
 <div class='card' appColorize [date]='item.snippet.publishedAt' [style]='"border-bottom"'>
+  <button *ngIf='item.id?.startsWith("custom")' class='card-button card-delete' (click)='deleteCard(item.id)'>
+    <span class='material-symbols-outlined'>delete</span>
+  </button>
   <div class='card-thumbnail'>
     <img [src]='item.snippet.thumbnails.default.url' alt='thumbnail'>
   </div>
-  <app-video-statistics [statistics]='item.statistics'></app-video-statistics>
+  <ng-container *ngIf='item.statistics'>
+    <app-video-statistics [statistics]='item.statistics'></app-video-statistics>
+  </ng-container>
   <h2 class='card-title'>{{item.snippet.title}}</h2>
   <app-button class='card-more' (click)='navigateToDetailed(item.id)'>more...</app-button>
 </div>
