@@ -9,6 +9,8 @@ import { MainComponent } from './pages/main/main.component';
 import { YoutubeService } from './services/youtube.service';
 import { DetailedPageComponent } from './pages/detailed-page/detailed-page.component';
 import { VideoStatisticsComponent } from './components/video-statistics/video-statistics.component';
+import { youtubeReducer } from '../redux/reducers/youtube.reducer';
+import { YoutubeEffect } from '../redux/effects/youtube.effect';
 import { customCardReducer } from '../redux/reducers/custom-card.reducer';
 
 @NgModule({
@@ -18,7 +20,9 @@ import { customCardReducer } from '../redux/reducers/custom-card.reducer';
     YoutubeRoutingModule,
     ResultsModule,
     VideoStatisticsComponent,
+    StoreModule.forFeature('youtube', youtubeReducer),
     StoreModule.forFeature('customCards', customCardReducer),
+    EffectsModule.forFeature(YoutubeEffect),
   ],
   providers: [YoutubeService],
 })
