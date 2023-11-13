@@ -18,6 +18,11 @@ const routes: Routes = [
     canActivate: [authGuard],
   },
   {
+    path: 'favorites',
+    loadChildren: () =>
+      import('./favorites/favorites.module').then((m) => m.FavoritesModule),
+  },
+  {
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },

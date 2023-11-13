@@ -2,6 +2,9 @@
   <button *ngIf='item.id?.startsWith("custom")' class='card-button card-delete' (click)='deleteCard(item.id)'>
     <span class='material-symbols-outlined'>delete</span>
   </button>
+  <button *ngIf='!item.id?.startsWith("custom")' class='card-button card-favorite' [class.favorite]='isFavorite$ | async' (click)='toggleFavorite(item.id)'>
+    <span class='material-symbols-outlined'>favorite</span>
+  </button>
   <div class='card-thumbnail'>
     <img [src]='item.snippet.thumbnails.default.url' alt='thumbnail'>
   </div>

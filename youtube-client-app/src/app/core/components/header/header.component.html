@@ -13,6 +13,9 @@
     <ng-container *ngIf='(isAuth | async)'>
       <span class='auth-username'>Your name</span>
       <button class='auth-button' type='button'>
+        <span class='material-symbols-outlined' routerLink='favorites'>favorite</span>
+      </button>
+      <button class='auth-button' type='button'>
         <span class="material-symbols-outlined" routerLink='admin'>admin_panel_settings</span>
       </button>
       <button class='auth-button' type='button' (click)='logout()'>

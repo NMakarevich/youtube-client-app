@@ -12,6 +12,7 @@ import { VideoStatisticsComponent } from './components/video-statistics/video-st
 import { youtubeReducer } from '../redux/reducers/youtube.reducer';
 import { YoutubeEffect } from '../redux/effects/youtube.effect';
 import { customCardReducer } from '../redux/reducers/custom-card.reducer';
+import { favoritesReducer } from '../redux/reducers/favorites.reducer';
 
 @NgModule({
   declarations: [MainComponent, DetailedPageComponent],
@@ -22,6 +23,7 @@ import { customCardReducer } from '../redux/reducers/custom-card.reducer';
     VideoStatisticsComponent,
     StoreModule.forFeature('youtube', youtubeReducer),
     StoreModule.forFeature('customCards', customCardReducer),
+    StoreModule.forFeature('favorites', favoritesReducer),
     EffectsModule.forFeature(YoutubeEffect),
   ],
   providers: [YoutubeService],

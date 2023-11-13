@@ -48,6 +48,18 @@
     }
   }
 
+  &-favorite {
+    background-color: #1E88E5;
+
+    &.favorite .material-symbols-outlined {
+      font-variation-settings: 'FILL' 1;
+    }
+
+    &:hover {
+      box-shadow: 0 0 2px 2px #2196F3;
+    }
+  }
+
   &-thumbnail {
     width: 100%;
 
