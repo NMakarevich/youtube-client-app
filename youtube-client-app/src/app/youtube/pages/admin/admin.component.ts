@@ -10,6 +10,7 @@ import { Store } from '@ngrx/store';
 import { validateDate, validateURL } from './utils/validators';
 import { CustomCard } from './custom-card.model';
 import { createCustomCard } from '../../../redux/actions/custom-card.action';
+import { ButtonType } from '../../../core/components/UI/button/button.component';
 
 interface CreateCardForm {
   title: FormControl<string>;
@@ -106,4 +107,6 @@ export class AdminComponent {
       }
     }
   }
+
+  protected readonly ButtonType = ButtonType;
 }

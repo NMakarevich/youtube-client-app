@@ -13,6 +13,7 @@ import {
   validatePasswordSpecialChars,
   validatePasswordStrong,
 } from './utils/validators';
+import { ButtonType } from '../../../core/components/UI/button/button.component';
 
 interface Login {
   login: FormControl<string>;
@@ -56,4 +57,6 @@ export class LoginComponent {
   get password(): FormControl<string> {
     return this.loginForm.controls.password;
   }
+
+  protected readonly ButtonType = ButtonType;
 }
