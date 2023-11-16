@@ -1,0 +1,3 @@
+<button class='button' [class.favorite]='(favorites$ | async)?.includes(id)' (click)='toggleFavorite()'>
+  <span class='material-symbols-outlined'>favorite</span>
+</button>

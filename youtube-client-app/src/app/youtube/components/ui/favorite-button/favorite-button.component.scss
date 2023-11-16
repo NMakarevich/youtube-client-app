@@ -1,0 +1,33 @@
+:host {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  background-color: #1E88E5;
+  border: none;
+  border-radius: 3px;
+  color: white;
+  transition: all 0.4s;
+
+  &:active {
+    .material-symbols-outlined {
+      font-variation-settings:
+        'wght' 700
+    }
+  }
+
+  &.favorite .material-symbols-outlined {
+    font-variation-settings: 'FILL' 1;
+  }
+
+  &:hover {
+    box-shadow: 0 0 2px 2px #2196F3;
+  }
+}
