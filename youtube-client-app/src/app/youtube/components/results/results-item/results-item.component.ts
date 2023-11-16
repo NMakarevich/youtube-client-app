@@ -22,7 +22,7 @@ export class ResultsItemComponent {
     this.router.navigate([this.router.url, 'video', id]).then((r) => r);
   }
 
-  deleteCard(id: string) {
-    this.store.dispatch(deleteCustomCard({ id }));
+  deleteCard() {
+    this.store.dispatch(deleteCustomCard({ id: this.item.id }));
   }
 }
