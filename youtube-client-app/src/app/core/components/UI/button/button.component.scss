@@ -31,4 +31,8 @@
   &:active {
     font-weight: bold;
   }
+
+  &:disabled:active {
+    font-weight: normal;
+  }
 }
