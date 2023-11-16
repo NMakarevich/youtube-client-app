@@ -1,7 +1,7 @@
 <div class='card' appColorize [date]='item.snippet.publishedAt' [style]='"border-bottom"'>
-  <button *ngIf='item.id?.startsWith("custom")' class='card-button card-delete' (click)='deleteCard(item.id)'>
+  <app-button *ngIf='item.id.startsWith("custom")' class='card-delete' (click)='deleteCard()'>
     <span class='material-symbols-outlined'>delete</span>
-  </button>
+  </app-button>
   <app-favorite-button *ngIf='!item.id.startsWith("custom")' [id]='item.id'></app-favorite-button>
   <div class='card-thumbnail'>
     <img [src]='item.snippet.thumbnails.default.url' alt='thumbnail'>
