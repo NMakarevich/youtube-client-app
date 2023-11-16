@@ -1,9 +1,18 @@
 :host {
   background-color: #1E88E5;
   border-radius: 3px;
+  transition: all 0.4s;
 
   &:hover {
     box-shadow: 0 0 2px 2px #2196F3;
+  }
+
+  &:hover:has(.button:disabled) {
+    box-shadow: none;
+  }
+
+  &:has(.button:disabled) {
+    opacity: 0.2;
   }
 }
 
@@ -18,17 +27,8 @@
   border: none;
   border-radius: 3px;
   cursor: pointer;
-  transition: all 0.4s;
 
   &:active {
     font-weight: bold;
-  }
-
-  &:hover:disabled {
-    box-shadow: none;
-  }
-
-  &:disabled {
-    opacity: 0.2;
   }
 }
