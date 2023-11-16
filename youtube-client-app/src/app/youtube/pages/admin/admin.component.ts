@@ -79,6 +79,7 @@ export class AdminComponent {
     if (this.createCardForm.invalid) return;
     const value = this.createCardForm.getRawValue();
     const newCard: CustomCard = {
+      id: '',
       statistics: null,
       snippet: {
         title: value.title,

@@ -1,5 +1,5 @@
 export interface CustomCard {
-  id?: string;
+  id: string;
   statistics: null;
   snippet: {
     publishedAt: string;

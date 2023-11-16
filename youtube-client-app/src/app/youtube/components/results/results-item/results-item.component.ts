@@ -34,20 +34,18 @@ export class ResultsItemComponent implements OnInit {
     });
   }
 
-  navigateToDetailed(id: string | undefined): void {
-    if (id) this.router.navigate([this.router.url, 'video', id]).then((r) => r);
+  navigateToDetailed(id: string): void {
+    this.router.navigate([this.router.url, 'video', id]).then((r) => r);
   }
 
-  deleteCard(id: string | undefined) {
-    if (id) this.store.dispatch(deleteCustomCard({ id }));
+  deleteCard(id: string) {
+    this.store.dispatch(deleteCustomCard({ id }));
   }
 
-  toggleFavorite(id: string | undefined) {
-    if (id) {
-      if (!this.isFavorite$.getValue())
-        this.store.dispatch(addToFavorite({ id }));
-      else this.store.dispatch(deleteFromFavorite({ id }));
-      this.isFavorite$.next(!this.isFavorite$.getValue());
-    }
+  toggleFavorite(id: string) {
+    if (!this.isFavorite$.getValue())
+      this.store.dispatch(addToFavorite({ id }));
+    else this.store.dispatch(deleteFromFavorite({ id }));
+    this.isFavorite$.next(!this.isFavorite$.getValue());
   }
 }
