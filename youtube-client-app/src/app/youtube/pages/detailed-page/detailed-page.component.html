@@ -1,4 +1,8 @@
 <ng-container *ngIf='video$ | async as video'>
+  <app-button *ngIf='video.id?.startsWith("custom")' class='button-delete' (click)='deleteCard(video.id)'>
+    <span class='material-symbols-outlined'>delete</span>
+  </app-button>
+  <app-favorite-button *ngIf='!video.id.startsWith("custom")' [id]='video.id'></app-favorite-button>
   <a routerLink='' class='back' appColorize [date]='video.snippet.publishedAt' [style]='"background-color"'>
     <span class="material-symbols-outlined">arrow_back_ios</span>
   </a>
