@@ -28,10 +28,18 @@ export const youtubeReducer = createReducer(
   initialState,
   on(
     youtubeActions.searchYoutubeCards,
-    (state, { searchTerm }): YoutubeState => ({
-      ...state,
-      searchTerm,
-    })
+    (state, { searchTerm }): YoutubeState => {
+      if (searchTerm && searchTerm !== state.searchTerm)
+        return {
+          ...state,
+          cards: [],
+          searchTerm,
+        };
+      return {
+        ...state,
+        searchTerm,
+      };
+    }
   ),
   on(
     youtubeActions.storePageTokens,
