@@ -1,4 +1,4 @@
-<ng-container *ngIf='video'>
+<ng-container *ngIf='video$ | async as video'>
   <a routerLink='' class='back' appColorize [date]='video.snippet.publishedAt' [style]='"background-color"'>
     <span class="material-symbols-outlined">arrow_back_ios</span>
   </a>

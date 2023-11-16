@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { concatAll, map, Observable, of } from 'rxjs';
 import { ResultsItem } from '../../components/results/results-item/results-item.model';
 import { SearchService } from '../../../core/services/search.service';
 import { CustomCard } from '../admin/custom-card.model';
@@ -10,7 +11,7 @@ import { CustomCard } from '../admin/custom-card.model';
   styleUrls: ['./detailed-page.component.scss'],
 })
 export class DetailedPageComponent implements OnInit {
-  video!: ResultsItem | CustomCard;
+  video$!: Observable<ResultsItem | CustomCard | undefined>;
 
   constructor(
     private readonly router: Router,
@@ -19,14 +20,19 @@ export class DetailedPageComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.route.paramMap.subscribe((param) => {
-      const id = param.get('id');
-      if (id) {
-        this.searchService.getVideoById(id).subscribe((result) => {
-          if (!result) this.router.navigate(['404']).then((r) => r);
-          else this.video = result;
-        });
-      } else this.router.navigate(['404']).then((r) => r);
-    });
+    this.video$ = this.route.paramMap.pipe(
+      map((paramMap) => {
+        const id = paramMap.get('id');
+        if (id) {
+          return this.searchService.getVideoById(id);
+        }
+        return of(undefined);
+      }),
+      concatAll(),
+      map((result) => {
+        if (!result) this.router.navigate(['404']).then((r) => r);
+        return result;
+      })
+    );
   }
 }
