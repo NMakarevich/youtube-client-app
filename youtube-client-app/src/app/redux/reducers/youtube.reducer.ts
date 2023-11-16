@@ -31,8 +31,7 @@ export const youtubeReducer = createReducer(
     (state, { searchTerm }): YoutubeState => {
       if (searchTerm && searchTerm !== state.searchTerm)
         return {
-          ...state,
-          cards: [],
+          ...initialState,
           searchTerm,
         };
       return {
