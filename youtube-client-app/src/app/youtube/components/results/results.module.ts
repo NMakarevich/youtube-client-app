@@ -8,6 +8,7 @@ import { SortPipe } from '../../pipes/sort.pipe';
 import { FilterPipe } from '../../pipes/filter.pipe';
 import { ButtonComponent } from '../../../core/components/UI/button/button.component';
 import { VideoStatisticsComponent } from '../video-statistics/video-statistics.component';
+import { FavoriteButtonComponent } from '../ui/favorite-button/favorite-button.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { VideoStatisticsComponent } from '../video-statistics/video-statistics.c
     SharedModule,
     ButtonComponent,
     VideoStatisticsComponent,
+    FavoriteButtonComponent,
   ],
 })
 export class ResultsModule {}
