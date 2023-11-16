@@ -1,5 +1,11 @@
 import { Component, Input } from '@angular/core';
 
+export enum ButtonType {
+  'button',
+  'submit',
+  'reset',
+}
+
 @Component({
   selector: 'app-button',
   templateUrl: './button.component.html',
@@ -8,4 +14,6 @@ import { Component, Input } from '@angular/core';
 })
 export class ButtonComponent {
   @Input() disabled = false;
+
+  @Input() type: ButtonType = ButtonType.button;
 }
