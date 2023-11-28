@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { toggleFavorite } from '../../../../redux/actions/favorites.action';
-import { selectFavoritesIds } from '../../../../redux/reducers/favorites.reducer';
+import { selectFavoritesIds } from '../../../../redux/reducers/app.reducer';
 
 @Component({
   selector: 'app-favorite-button',

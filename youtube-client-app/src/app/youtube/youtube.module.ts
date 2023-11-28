@@ -9,13 +9,11 @@ import { MainComponent } from './pages/main/main.component';
 import { YoutubeService } from './services/youtube.service';
 import { DetailedPageComponent } from './pages/detailed-page/detailed-page.component';
 import { VideoStatisticsComponent } from './components/video-statistics/video-statistics.component';
-import { youtubeReducer } from '../redux/reducers/youtube.reducer';
 import { YoutubeEffect } from '../redux/effects/youtube.effect';
-import { customCardReducer } from '../redux/reducers/custom-card.reducer';
-import { favoritesReducer } from '../redux/reducers/favorites.reducer';
 import { FavoritesEffect } from '../redux/effects/favorites.effect';
 import { FavoriteButtonComponent } from './components/ui/favorite-button/favorite-button.component';
 import { ButtonComponent } from '../core/components/UI/button/button.component';
+import { appReducer } from '../redux/reducers/app.reducer';
 
 @NgModule({
   declarations: [MainComponent, DetailedPageComponent],
@@ -24,9 +22,7 @@ import { ButtonComponent } from '../core/components/UI/button/button.component';
     YoutubeRoutingModule,
     ResultsModule,
     VideoStatisticsComponent,
-    StoreModule.forFeature('youtube', youtubeReducer),
-    StoreModule.forFeature('customCards', customCardReducer),
-    StoreModule.forFeature('favorites', favoritesReducer),
+    StoreModule.forFeature('appState', appReducer),
     EffectsModule.forFeature(YoutubeEffect, FavoritesEffect),
     FavoriteButtonComponent,
     ButtonComponent,

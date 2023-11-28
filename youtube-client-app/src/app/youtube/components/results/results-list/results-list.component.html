@@ -3,7 +3,7 @@
     <app-results-item *ngFor='let result of results | sort: sort | filter: filter' [item]='result'></app-results-item>
   </div>
   <div class='pagination' *ngIf='results.length > 0'>
-    <app-button class='pagination-button' (click)='prevPage()' [disabled]='(prevPageToken | async) === ""'>Prev page</app-button>
+    <app-button class='pagination-button' (click)='prevPage()' [disabled]='(currentPage | async) === 1'>Prev page</app-button>
     <app-button class='pagination-button' (click)='nextPage()' [disabled]='(nextPageToken | async) === ""'>Next page</app-button>
   </div>
 </ng-container>

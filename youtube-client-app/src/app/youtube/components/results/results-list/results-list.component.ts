@@ -4,9 +4,9 @@ import { Observable } from 'rxjs';
 import { YoutubeService } from '../../../services/youtube.service';
 import { SortParam } from '../../../../core/services/sorting.service';
 import {
+  selectCurrentPage,
   selectNextPageToken,
-  selectPrevPageToken,
-} from '../../../../redux/reducers/youtube.reducer';
+} from '../../../../redux/reducers/app.reducer';
 import { ResultsItem } from '../results-item/results-item.model';
 import { CustomCard } from '../../../pages/admin/custom-card.model';
 
@@ -18,9 +18,9 @@ import { CustomCard } from '../../../pages/admin/custom-card.model';
 export class ResultsListComponent {
   @Input() results$!: Observable<(ResultsItem | CustomCard)[]>;
 
-  nextPageToken = this.store.select(selectNextPageToken);
+  currentPage = this.store.select(selectCurrentPage);
 
-  prevPageToken = this.store.select(selectPrevPageToken);
+  nextPageToken = this.store.select(selectNextPageToken);
 
   constructor(
     private readonly youtubeService: YoutubeService,

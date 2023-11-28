@@ -13,7 +13,7 @@ import {
   prevYoutubePage,
   storePageTokens,
 } from '../../redux/actions/youtube.action';
-import { selectAllCards } from '../../redux/selectors/all-cards.selector';
+import { selectResultPage } from '../../redux/reducers/app.reducer';
 
 @Injectable()
 export class SearchService {
@@ -79,6 +79,6 @@ export class SearchService {
   }
 
   get results$() {
-    return this.store.select(selectAllCards);
+    return this.store.select(selectResultPage);
   }
 }

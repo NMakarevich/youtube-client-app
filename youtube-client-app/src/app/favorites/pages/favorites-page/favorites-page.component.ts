@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { selectFavoritesItems } from '../../../redux/reducers/favorites.reducer';
+import { selectFavoritesCards } from '../../../redux/reducers/app.reducer';
 
 @Component({
   selector: 'app-favorites-page',
@@ -8,7 +8,7 @@ import { selectFavoritesItems } from '../../../redux/reducers/favorites.reducer'
   styleUrls: ['./favorites-page.component.scss'],
 })
 export class FavoritesPageComponent {
-  favorites$ = this.store.select(selectFavoritesItems);
+  favorites$ = this.store.select(selectFavoritesCards);
 
   constructor(private readonly store: Store) {}
 }

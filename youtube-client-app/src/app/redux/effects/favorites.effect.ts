@@ -3,8 +3,7 @@ import { Injectable } from '@angular/core';
 import { map, switchMap, take } from 'rxjs';
 import { Store } from '@ngrx/store';
 import * as actions from '../actions/favorites.action';
-import { selectFavoritesIds } from '../reducers/favorites.reducer';
-import { addToFavorite, deleteFromFavorite } from '../actions/favorites.action';
+import { selectFavoritesIds } from '../reducers/app.reducer';
 
 @Injectable()
 export class FavoritesEffect {
@@ -16,8 +15,8 @@ export class FavoritesEffect {
           take(1),
           map((ids) =>
             ids.includes(id)
-              ? deleteFromFavorite({ id })
-              : addToFavorite({ id })
+              ? actions.deleteFromFavorite({ id })
+              : actions.addToFavorite({ id })
           )
         )
       )
